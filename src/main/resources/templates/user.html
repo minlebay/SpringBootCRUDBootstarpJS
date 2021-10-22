@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User page</title>
+</head>
+<body>
+<h1>User page</h1>
+<div>
+    <th:block th:each="msg : ${messages}">
+        <h1 th:text="${msg}"></h1>
+    </th:block>
+</div>
+<div>
+    <h1><p th:text = "${user.toString()}"></p></h1>
+</div>
+<br>
+<h2><a href="/logout">Logout</a></h2>
+</body>
+</html>

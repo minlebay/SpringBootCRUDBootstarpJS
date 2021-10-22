@@ -1,0 +1,47 @@
+package com.JM.BootCRUD.dao;
+
+import com.JM.BootCRUD.model.User;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
+@Repository
+public class UserDaoImpl implements UserDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public User getById(Long id){
+        return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public List<User> getAll(){
+        return entityManager.createQuery("SELECT user from User user", User.class)
+                .getResultList();
+    }
+
+    @Override
+    public void add(User user){
+        entityManager.persist(user);
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return entityManager.createQuery("SELECT user from User user WHERE user.username=:username", User.class)
+                .setParameter("username", username)
+                .getSingleResult();
+    }
+
+    @Override
+    public void edit(User user){
+        entityManager.merge(user);
+    }
+
+    @Override
+    public void delete(Long id){
+        entityManager.remove(entityManager.find(User.class, id));
+    }
+}

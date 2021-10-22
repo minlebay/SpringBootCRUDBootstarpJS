@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administartion console</title>
+</head>
+<body>
+
+<div>
+    <h1>Users management:</h1>
+</div>
+
+<table th:border="1">
+    <tr>
+        <th><h2>name</h2></th>
+        <th><h2>last name</h2></th>
+        <th><h2>email</h2></th>
+        <th><h2>management</h2></th>
+    </tr>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td><h3 th:text="${user.name}"></h3></td>
+            <td><h3 th:text="${user.lastName}"></h3></td>
+            <td><h3 th:text="${user.email}"></h3></td>
+            <td>
+                <h3><a th:href="'/admin' + @{/editUser(id=${user.id})}">edit</a></h3>
+                <h3><a th:href="'/admin' + @{/deleteUser(id=${user.id})}">delete</a></h3>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<h2><a href="/user">To current user page</a></h2>
+<h2><a href="/admin/addUser">Add new user</a></h2>
+<br>
+<h2><a href="/logout">Logout</a></h2>
+</body>
+</html>
