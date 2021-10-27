@@ -2,6 +2,7 @@ package com.JM.BootCRUD.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return this.role;
+        return this.role.substring(5);
     }
 
     @Override
