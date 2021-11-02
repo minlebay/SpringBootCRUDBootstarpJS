@@ -1,10 +1,10 @@
 package com.JM.BootCRUD.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -30,11 +30,11 @@ public class User {
     private String password;
     @Column
     private Boolean active;
-    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles;
 
     public User() {
 

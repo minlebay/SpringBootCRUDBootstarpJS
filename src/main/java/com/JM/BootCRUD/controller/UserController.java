@@ -41,7 +41,6 @@ public class UserController {
         modelAndView.addObject("selectableRoles", roleService.getAll());
         return modelAndView;
     }
-
     @PostMapping("/admin")
     public RedirectView create(@ModelAttribute("user") User user,
                                Long[] roleIds) {
@@ -51,8 +50,8 @@ public class UserController {
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public RedirectView edit(@ModelAttribute("user") User user,
-                        Long[] roleIds,
-                        @PathVariable("id") Long id) {
+                             Long[] roleIds,
+                             @PathVariable("id") Long id) {
         userService.edit(userService.getById(id), roleIds);
         return new RedirectView("/admin");
     }

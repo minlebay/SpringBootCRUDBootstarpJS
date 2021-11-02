@@ -14,7 +14,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 @ComponentScan(value = "com.JM.BootCRUD")
 public class WebConfig implements WebMvcConfigurer {
 
