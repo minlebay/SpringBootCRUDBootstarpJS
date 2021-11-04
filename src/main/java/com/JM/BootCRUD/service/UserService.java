@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface UserService {
 
-    void add(User user, Long[] roleIds);
+    void add(User user);
 
-    void edit(User user, Long[] roleIds);
+    void edit(User user);
 
     void delete(Long id);
 

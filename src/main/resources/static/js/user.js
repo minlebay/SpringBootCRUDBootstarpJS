@@ -1,8 +1,10 @@
+const getAuthorizedUserURL = 'http://localhost:8080/getAuthorizedUser'
+
 showUserInfo()
 
 function showUserInfo(user)
 {
-    fetch('http://localhost:8080/getAuthorizedUser')
+    fetch(getAuthorizedUserURL)
         .then(responce => responce.json())
         .then(user => {
             let tBody = document.getElementById("userInfoRows");
