@@ -1,6 +1,5 @@
 package com.JM.BootCRUD.service;
 
-import com.JM.BootCRUD.dao.RoleDao;
 import com.JM.BootCRUD.dao.UserDao;
 import com.JM.BootCRUD.model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;

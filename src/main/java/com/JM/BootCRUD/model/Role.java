@@ -3,7 +3,6 @@ package com.JM.BootCRUD.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Repository;
 

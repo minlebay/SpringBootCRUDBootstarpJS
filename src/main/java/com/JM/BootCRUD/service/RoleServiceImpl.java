@@ -27,5 +27,4 @@ public class RoleServiceImpl implements RoleService{
     public Role getById(Long id) {
         return roleDao.getById(id);
     }
-
 }
