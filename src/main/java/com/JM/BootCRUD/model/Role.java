@@ -1,6 +1,7 @@
 package com.JM.BootCRUD.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ import java.util.Objects;
 @Repository
 @Getter
 @Setter
+@NoArgsConstructor
 public class Role implements GrantedAuthority {
 
     @Id
@@ -22,8 +24,6 @@ public class Role implements GrantedAuthority {
 
     @Column(unique = true)
     private String role;
-
-    public Role() {}
 
     @Override
     public String toString() {
