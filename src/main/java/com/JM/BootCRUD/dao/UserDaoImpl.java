@@ -1,6 +1,7 @@
 package com.JM.BootCRUD.dao;
 
 import com.JM.BootCRUD.model.User;
+import org.hibernate.annotations.Subselect;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,12 +15,15 @@ public class UserDaoImpl implements UserDao {
     private EntityManager entityManager;
 
     public User getById(Long id){
-        return entityManager.find(User.class, id);
+        return entityManager.createQuery("SELECT user from User user JOIN FETCH user.roles" +
+                        " WHERE user.id=:id", User.class)
+                .setParameter("id", id)
+                .getSingleResult();
     }
 
     @Override
     public List<User> getAll(){
-        return entityManager.createQuery("SELECT user from User user", User.class)
+        return entityManager.createQuery("SELECT user from User user JOIN FETCH user.roles ", User.class)
                 .getResultList();
     }
 
@@ -30,7 +34,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getByUsername(String username) {
-        return entityManager.createQuery("SELECT user from User user WHERE user.username=:username", User.class)
+        return entityManager.createQuery("SELECT user from User user JOIN FETCH user.roles WHERE user.username=:username", User.class)
                 .setParameter("username", username)
                 .getSingleResult();
     }

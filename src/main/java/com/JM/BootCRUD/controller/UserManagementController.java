@@ -48,14 +48,14 @@ public class UserManagementController {
     }
 
     @PatchMapping("/{id}")
-    public HttpStatus edit(@RequestBody User user) {
+    public ResponseEntity<User> edit(@RequestBody User user) {
         userService.edit(user);
-        return HttpStatus.OK;
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public HttpStatus delete(@PathVariable("id") Long id) {
+    public ResponseEntity<User> delete(@PathVariable("id") Long id) {
         userService.delete(id);
-        return HttpStatus.OK;
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }

@@ -4,12 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "roles")
+@Repository
 @Getter
 @Setter
 public class Role implements GrantedAuthority {

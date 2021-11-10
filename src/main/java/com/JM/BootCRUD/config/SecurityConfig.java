@@ -84,8 +84,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //страница пользователя доступна только ролям пользователь и админ.
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 //страницы и подстраницы доступные только админам
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
+
                 .authenticated();
 
         http.httpBasic();

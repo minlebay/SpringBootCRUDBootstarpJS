@@ -1,6 +1,7 @@
 package com.JM.BootCRUD.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Repository
 @Getter
 @Setter
+@NoArgsConstructor
 public class User {
     @Id
     @Column(name = "id")
@@ -30,15 +32,11 @@ public class User {
     private String password;
     @Column
     private Boolean active;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "users_id"),
-            inverseJoinColumns = @JoinColumn(name = "roles_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
-    public User() {
-
-    }
 
     @Override
     public boolean equals(Object o) {
