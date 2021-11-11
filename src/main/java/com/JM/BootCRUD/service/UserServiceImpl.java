@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public List<User> getAll() {
-        return userDao.getAll().stream().distinct().collect(Collectors.toList());
+        return userDao.getAll();
     }
 
     @Override
